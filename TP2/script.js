@@ -63,18 +63,30 @@ function afficherTaches() {
     span.textContent = tache.texte;
 
     //étape 5
+    const boutons = document.createElement("div");
     const terminerBtn = document.createElement("button");
     const supprimerBtn = document.createElement("button");
 
-    terminerBtn.textContent = "Terminer";
+    boutons.style.display = "flex";
+    boutons.style.gap = "1rem";
+    boutons.appendChild(terminerBtn);
+    boutons.appendChild(supprimerBtn);
+
+    if (tache.etat) {
+      terminerBtn.textContent = "Marquer non Trminée"
+    }else {
+      terminerBtn.textContent = "Terminer";
+    }
+    terminerBtn.style.backgroundColor = "yellow";
     terminerBtn.onclick = () => terminerTache(tache);
 
     supprimerBtn.textContent = "Supprimer";
+    supprimerBtn.style.backgroundColor = "red";
+    supprimerBtn.style.color = "white";
     supprimerBtn.onclick = () => supprimerTache(tache);
 
     li.appendChild(span);
-    li.appendChild(terminerBtn);
-    li.appendChild(supprimerBtn);
+    li.appendChild(boutons);
 
     taskList.appendChild(li);
   });

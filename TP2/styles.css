@@ -2,6 +2,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 40px;
   background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -21,11 +23,20 @@ h1 {
 #addBtn {
   padding: 8px 12px;
   margin-left: 5px;
+  background-color: green;
+  color: white;
+}
+
+#clearAll {
+  background-color: red;
+  color: white;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  width: 60%;
+  align-self: center;
 }
 
 li {
@@ -50,4 +61,10 @@ button {
 .footer {
   margin-top: 20px;
   text-align: center;
+}
+
+button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
 }
