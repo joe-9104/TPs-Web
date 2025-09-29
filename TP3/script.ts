@@ -78,3 +78,101 @@ function concat(a: string | number, b: string | number): any {
 }
 console.log(concat("Hello, ", "world!"));
 console.log(concat(5, 10));
+
+//ex6
+class Person {
+    name: string;
+    age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+    greet() {
+        console.log(`Hello, je suis ${this.name} et j'ai ${this.age} ans.`);
+    }
+}
+
+class Student extends Person {
+    school: string;
+    constructor(name: string, age: number, school: string) {
+        super(name, age);
+        this.school = school;
+    }
+}
+
+abstract class Shape {
+    abstract area(): number;
+}
+class Circle extends Shape {
+    radius: number
+    constructor(radius: number) {
+        super()
+        this.radius = radius
+    }
+    area(): number {
+        return Math.PI * this.radius ** 2
+    }
+}
+class Rectangle extends Shape {
+    width: number
+    height: number
+    constructor(width: number, height: number) {
+        super()
+        this.width = width
+        this.height = height
+    }
+    area(): number {
+        return this.width * this.height
+    }  
+}
+
+//ex7
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+function getFirst<T>(arr: T[]): T {
+    return arr[0]!;
+}
+
+class Repository<T> {
+    private items: T[] = [];
+
+    add(item: T): void {
+        this.items.push(item);
+    }
+    getAll(): T[] {
+        return this.items;
+    }
+    remove(item: T): void {
+        this.items = this.items.filter(i => i !== item);
+    }
+}
+
+interface ApiResponse<T> {
+    data: T;
+    error: string;
+}
+
+//ex8
+import { somme } from "./math.js"
+console.log(somme(10, 20));
+
+import { soustraction, multiplication } from "./index.js"
+console.log(soustraction(30, 15));
+console.log(multiplication(4, 5));
+
+import type { Operation, CalculationResult } from "./types.js"
+
+function calculate(a: number, b: number, operation: Operation): CalculationResult {
+    let result: number = 0;
+    switch (operation) {
+        case 'add':
+            result = somme(a, b);
+            break;
+        case 'subtract':
+            result = soustraction(a, b);
+            break;
+    }
+    return { operation, result };
+}

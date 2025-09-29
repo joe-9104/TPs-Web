@@ -1,0 +1,1 @@
+export {somme, soustraction, multiplication} from './math.js';
