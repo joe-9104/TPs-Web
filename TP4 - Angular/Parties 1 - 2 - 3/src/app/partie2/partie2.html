@@ -1,0 +1,12 @@
+<div class="qcm">
+  <h2>Partie 2 : Création d’un projet Angular</h2>
+
+  <div *ngFor="let q of questions" class="question">
+    <p class="question-text">{{ q.text }}</p>
+    <ul>
+      <li *ngFor="let opt of q.options" [class.correct]="opt.correct">
+        {{ opt.text }}
+      </li>
+    </ul>
+  </div>
+</div>

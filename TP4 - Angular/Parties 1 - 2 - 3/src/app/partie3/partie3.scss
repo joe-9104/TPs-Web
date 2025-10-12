@@ -1,0 +1,42 @@
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  color: #222;
+  line-height: 1.5;
+}
+
+h1 {
+  text-align: center;
+  color: #c2185b;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #1976d2;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #2e7d32;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f3f3f3;
+}
+
+ul {
+  list-style-type: square;
+  margin-left: 20px;
+}
