@@ -4,9 +4,10 @@
 
 // Déclaration de variables primitives
 let nom: string = "Youssef";
-let age: number = 22;
+let age: number = 21;
 let estEtudiant: boolean = true;
-let note: number | null = null; // union de types
+// union de types
+let note: number | null = null;
 
 console.log(`Bonjour ${nom}, âge : ${age}, étudiant : ${estEtudiant}`);
 
@@ -48,16 +49,16 @@ console.log(e1.afficherInfos());
 // Partie 5 – Concepts avancés
 // ================================
 
-// 1️⃣ Types génériques
+// Types génériques
 function creerTableau<T>(...elements: T[]): T[] {
   return [...elements];
 }
 
 const nombres = creerTableau<number>(1, 2, 3, 4);
-const noms = creerTableau<string>("Ali", "Sara", "Nour");
+const noms = creerTableau<string>("Youssef", "Idris", "Omar");
 console.log("Tableaux génériques:", nombres, noms);
 
-// 2️⃣ Unions de types et types optionnels
+// Unions de types et types optionnels
 function afficherValeur(valeur: string | number | null = null): void {
   if (valeur === null) console.log("Aucune valeur");
   else console.log("Valeur reçue :", valeur);
@@ -67,7 +68,7 @@ afficherValeur("Bonjour");
 afficherValeur(42);
 afficherValeur();
 
-// 3️⃣ Énumérations (enum)
+// Énumérations (enum)
 enum Role {
   USER = "User",
   ADMIN = "Admin",
