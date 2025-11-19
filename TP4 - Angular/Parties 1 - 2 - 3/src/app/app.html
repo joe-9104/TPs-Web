@@ -51,6 +51,7 @@
         </defs>
       </svg>
       <h1>Hello, {{ title() }}</h1>
+      <p>Réponses aux parties 1, 2 (QCMs) et 3 (Comparaison) dans cette page</p>
       <p>Parties 4 et 5 dans un fichier indépendant du serveur (exercices-typpescript.ts)</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
@@ -149,7 +150,9 @@
     </div>
   </div>
 </main>
-<app-partie1></app-partie1>
-<app-partie2></app-partie2>
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
+  <app-partie1></app-partie1>
+  <app-partie2></app-partie2>
+</div>
 <app-partie3></app-partie3>
 <router-outlet />

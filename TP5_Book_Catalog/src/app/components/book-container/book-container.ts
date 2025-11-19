@@ -9,34 +9,114 @@ import {Book} from '../../models/book.model';
   selector: 'book-container',
   standalone: true,
   imports: [CommonModule, FormsModule, BookList, BookForm],
-  template: `
-  <h1>Gestion des livres</h1>
-  <div style="display: flex; flex-direction: column; gap: 1rem; padding: 1rem;">
-    <book-form
-      [categories]="categories"
-      [editBook]="editingBook"
-      (create)="addBook($event)"
-      (update)="updateBook($event)"
-      (cancel)="cancelEdit()"
-    ></book-form>
+template: `
+    <h1>Gestion des livres</h1>
+    <div class="book-container">
+      <book-form
+        [categories]="categories"
+        [editBook]="editingBook"
+        (create)="addBook($event)"
+        (update)="updateBook($event)"
+        (cancel)="cancelEdit()"
+      ></book-form>
 
-    <hr />
+      <hr />
 
-    <div class="header">
-      <h2>Catalogue des livres ({{totalCount}})</h2>
-      <div>
-        <input class="search-input" placeholder="Recherche par titre/auteur" [(ngModel)]="searchText" />
-        <select [(ngModel)]="sortBy">
-          <option value="">-- Trier --</option>
-          <option value="category">Catégorie</option>
-          <option value="available">Disponibilité</option>
-        </select>
-        <span class="counter">Total: {{filteredBooks.length}}</span>
+      <div class="header">
+        <h2>Catalogue des livres ({{totalCount}})</h2>
+        <div class="controls">
+          <input class="search-input" placeholder="Recherche par titre/auteur" [(ngModel)]="searchText" />
+          <select [(ngModel)]="sortBy">
+            <option value="">-- Trier --</option>
+            <option value="category">Catégorie</option>
+            <option value="available">Disponibilité</option>
+          </select>
+          <span class="counter">Total: {{filteredBooks.length}}</span>
+        </div>
       </div>
+      <book-list [books]="filteredBooks" (edit)="startEdit($event)" (delete)="deleteBook($event)"></book-list>
     </div>
-    <book-list [books]="filteredBooks" (edit)="startEdit($event)" (delete)="deleteBook($event)"></book-list>
-  </div>
-  `
+  `,
+  styles: [`
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .book-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1rem 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: #3498db;
+    }
+
+    select {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    select:focus {
+      border-color: #3498db;
+    }
+
+    .counter {
+      font-weight: 600;
+      color: #555;
+      min-width: 80px;
+      text-align: right;
+    }
+
+    h2 {
+      margin: 0;
+      color: #34495e;
+    }
+  `]
 })
 export class BookContainerComponent {
   books: Book[] = [
